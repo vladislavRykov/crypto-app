@@ -1,0 +1,26 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: var(--main-color);
+  &_wrapper {
+    height: calc(100vh - 60px);
+    color: var(--text-color);
+    padding: 30px;
+    display: grid;
+    height: 100%;
+    grid-template-columns: 1fr 3fr;
+    column-gap: 20px;
+  }
+  &_sidebar {
+    height: calc(100vh - 60px);
+    background-color: var(--block-color);
+    padding: 10px;
+    border-radius: 6px;
+  }
+  &_page {
+    height: calc(100vh - 60px);
+    background-color: var(--block-color);
+    padding: 10px;
+    border-radius: 6px;
+  }
+}

@@ -1,0 +1,20 @@
+.marketGlobal {
+  margin-bottom: 10px;
+  &_wrapper {
+    width: 80%;
+    padding: 20px 0px 0px 20px;
+    font-size: 13px;
+    color: gray;
+  }
+  &_info {
+    color: black;
+    font-weight: 600;
+    font-size: 28px;
+  }
+  &_date {
+    margin-bottom: 10px;
+    text-align: end;
+    color: rgba(128, 128, 128, 0.445);
+    font-size: 12px;
+  }
+}

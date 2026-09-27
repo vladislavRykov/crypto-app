@@ -1,0 +1,46 @@
+.coinsTable {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.table {
+  flex: 1;
+  overflow: auto;
+  tr,
+  td {
+    padding: 6px 8px;
+    text-align: left;
+  }
+  tbody tr {
+    transition: 0.2s;
+    &:hover {
+      background-color: rgb(212, 213, 228);
+    }
+  }
+  th:last-child {
+    text-align: center;
+  }
+  &_wrapper {
+    width: 100%;
+    border-collapse: collapse;
+  }
+}
+.row {
+  height: 30px;
+  &_graphLink {
+    display: inline-block;
+    svg {
+      cursor: pointer;
+    }
+  }
+  &_coinsName {
+    img {
+      width: 30px;
+    }
+    a {
+      gap: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}
