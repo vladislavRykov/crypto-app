@@ -1,4 +1,5 @@
 .searchBar {
+  font-weight: 500;
   padding: 20px;
   &_wrapper {
     position: relative;
@@ -29,23 +30,23 @@
       background-color: #e9e9e9;
     }
   }
-  &_softLoading {
-    text-align: center;
-    color: gray;
-    animation: blinking 1s infinite linear;
-  }
   &_notFound {
   }
 }
-
-@keyframes blinking {
-  0% {
-    opacity: 1;
+.searchCoinHistory {
+  &_header {
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
   }
-  50% {
-    opacity: 0.4;
+  &_title {
+    color: gray;
+    font-weight: 500;
   }
-  100% {
-    opacity: 1;
+  &_cross {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 10px;
   }
 }

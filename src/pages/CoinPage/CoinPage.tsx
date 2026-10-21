@@ -1,65 +1,29 @@
-import React from "react";
 import { useParams } from "react-router-dom";
-import { useGetCoinChartById } from "../../hooks/CoinGecko";
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { getChartTime } from "../../utils/formatTime";
-import { formatPrice } from "../../utils/formatPrice";
+import { useCurrency } from "@/context/CurrencyContext";
+import CoinChart from "./components/CoinChart/CoinChart";
+import CoinInfo from "./components/CoinInfo/CoinInfo";
+import s from "./CoinPage.module.scss";
+import { useGetCoinById } from "@/hooks/CoinGecko";
+import GoBackBtn from "@/components/shared/Buttons/GoBackBtn/GoBackBtn";
 
 const CoinPage = () => {
   const { id } = useParams();
-  const vs_currency = "rub";
-  const { data, isLoading, error } = useGetCoinChartById(
-    {
-      days: "7",
-      vs_currency,
-    },
+  const { currency } = useCurrency();
+  const { data: coinData, isError } = useGetCoinById(
+    { vs_currency: currency },
     id || "",
   );
-  const chartData = data?.prices.map(([timestamp, price]) => ({
-    timestamp,
-    price,
-  }));
-  console.log(2252, chartData);
-  // console.log(222, data);
+  if (isError || !coinData) {
+    return <div>Не удалось загрузить данные о монете</div>;
+  }
   return (
-    <div>
-      <ResponsiveContainer width="100%" height={300}>
-        <LineChart width={600} height={300} data={chartData}>
-          <CartesianGrid strokeDasharray="3 3" opacity={0.5} />
-          <XAxis dataKey="timestamp" tickFormatter={(t) => getChartTime(t)} />
-          <YAxis
-            width={"auto"}
-            dataKey="price"
-            domain={["auto", "auto"]}
-            tickFormatter={(p) => formatPrice(p, vs_currency)}
-          />
-          <Tooltip
-            labelFormatter={(t) => {
-              if (typeof t !== "number") return "";
-              return getChartTime(t);
-            }}
-            formatter={(p) => {
-              if (typeof p !== "number") return "";
-              return formatPrice(p, vs_currency);
-            }}
-          />
-          <Line
-            type="monotone"
-            dataKey="price"
-            stroke="#8884d8"
-            strokeWidth={2}
-            dot={false}
-          />
-        </LineChart>
-      </ResponsiveContainer>
+    <div className={s.coinPage}>
+      <div className={s.coinPage_wrapper}>
+        <CoinInfo coinData={coinData} vs_currency={currency} />
+        <CoinChart id={id} vs_currency={currency} />
+      </div>
+      <p className={s.coinPage_desc}>{coinData.description.en}</p>
+      <p className={s.coinPage_desc}>{coinData.description.en}</p>
     </div>
   );
 };

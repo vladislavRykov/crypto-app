@@ -1,14 +1,15 @@
 import { createContext, useState, useContext, type ReactNode } from "react";
+import type { CurrencyT } from "../CoinGeckoTypes";
 
 type CurrencyContextType = {
-  currency: string;
-  setCurrency: (c: string) => void;
+  currency: CurrencyT;
+  setCurrency: (c: CurrencyT) => void;
 };
 
 const CurrencyContext = createContext<CurrencyContextType | null>(null);
 
 export const CurrencyProvider = ({ children }: { children: ReactNode }) => {
-  const [currency, setCurrency] = useState("usd");
+  const [currency, setCurrency] = useState<CurrencyT>("usd");
 
   return (
     <CurrencyContext.Provider value={{ currency, setCurrency }}>

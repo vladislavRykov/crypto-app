@@ -1,0 +1,61 @@
+.coinInfo {
+  width: 100%;
+  flex-grow: 1;
+  font-weight: 500;
+  &_info {
+    font-size: 13px;
+    color: gray;
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    margin-top: 10px;
+  }
+  &_name {
+    font-size: 18px;
+    color: black;
+    font-weight: 600;
+  }
+  &_symbol {
+    text-transform: uppercase;
+  }
+  &_rank {
+  }
+  &_priceAndPercent {
+    font-size: 14px;
+  }
+  &_price {
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+.coinLinks {
+  margin-top: 10px;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+  &_item {
+  }
+  &_title {
+    color: gray;
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  &_links {
+    display: flex;
+    gap: 5px;
+  }
+}
+.linkItem {
+  padding: 2px 6px;
+  background-color: var(--secondary-color);
+  color: rgb(237, 237, 237);
+  font-size: 12px;
+  border-radius: 15px;
+  transition: 0.1s;
+  &:hover {
+    background-color: var(--secondary-hover-color);
+  }
+}
+.watchcoin {
+  margin-top: 10px;
+}

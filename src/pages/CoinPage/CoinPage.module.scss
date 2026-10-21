@@ -1,0 +1,11 @@
+.coinPage {
+  display: flex;
+  flex-direction: column;
+  &_wrapper {
+    display: flex;
+  }
+  &_desc {
+    text-indent: 20px;
+    overflow: auto;
+  }
+}

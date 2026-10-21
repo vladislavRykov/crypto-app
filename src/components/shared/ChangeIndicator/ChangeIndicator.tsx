@@ -1,7 +1,13 @@
 import { TbArrowBadgeDownFilled, TbArrowBadgeUpFilled } from "react-icons/tb";
 import { formatPercent } from "../../../utils/formatPercent";
 
-const ChangeIndicator = ({ percent }: { percent: number }) => {
+const ChangeIndicator = ({
+  percent,
+  period,
+}: {
+  percent: number;
+  period?: string;
+}) => {
   return (
     <span>
       <span style={{ color: percent >= 0 ? "green" : "red" }}>
@@ -10,7 +16,7 @@ const ChangeIndicator = ({ percent }: { percent: number }) => {
         ) : (
           <TbArrowBadgeDownFilled color="red" />
         )}
-        {formatPercent(percent)}%
+        {formatPercent(percent)}%{period}
       </span>
     </span>
   );

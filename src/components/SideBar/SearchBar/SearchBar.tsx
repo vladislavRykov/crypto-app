@@ -4,12 +4,22 @@ import { useDebouncedValue } from "../../../hooks/simpleHooks";
 import { Link } from "react-router-dom";
 import { useSelect } from "../../../hooks/useSelect";
 import { useSearchDebounced } from "../../../hooks/useSearch";
+import SolfLoader from "../../shared/SolfLoading/SolfLoading";
+import {
+  getHistory,
+  updateHistory,
+  type HistoryCoinSearchT,
+} from "@/utils/coin-search/searchCoinHistrory";
+import SearchCoinHistory from "./SearchCoinHistory";
 
 const SearchBar = () => {
   const { value, debouncedValue, isUpdating, onInputChange, setValue } =
     useSearchDebounced(800);
-  const { open, setIsOpen, onOptionClick, wrapperRef } = useSelect(() =>
-    setValue(""),
+  const { open, setIsOpen, onOptionClick, wrapperRef } = useSelect(
+    (record: HistoryCoinSearchT | null) => {
+      record && updateHistory(record);
+      setValue("");
+    },
   );
 
   const { data, isLoading } = useSearchForCoin(
@@ -30,9 +40,8 @@ const SearchBar = () => {
 
         {open && (
           <div className={s.searchSelect}>
-            {(isLoading || isUpdating) && (
-              <div className={s.searchSelect_softLoading}>Загрузка</div>
-            )}
+            {!value && <SearchCoinHistory onOptionClick={onOptionClick} />}
+            {(isLoading || isUpdating) && <SolfLoader text="Загрузка" />}
             {!data ||
               (data.coins.length === 0 && (
                 <div className={s.searchSelect_notFound}>Не найдено</div>
@@ -40,7 +49,7 @@ const SearchBar = () => {
             {data?.coins.map((coin) => (
               <Link
                 to={`coin/${coin.id}`}
-                onClick={onOptionClick}
+                onClick={() => onOptionClick(coin)}
                 className={s.searchSelect_option}
               >
                 <img src={coin.thumb} loading="lazy" />

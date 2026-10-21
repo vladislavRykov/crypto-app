@@ -3,13 +3,13 @@ import { FaHome } from "react-icons/fa";
 
 export const sideBarPageLinks = [
   {
-    title: "Introduction",
+    title: "Home",
     path: "/crypto-app",
     Icon: FaHome,
   },
   {
     title: "Dashboard",
-    path: "dashboard",
+    path: "dashboard?page=1",
     Icon: MdSpaceDashboard,
   },
 ];

@@ -4,6 +4,11 @@
   --block-color: rgb(242, 242, 246);
   --text-color: black;
   --main-box-shadow: #b8b8b8;
+
+  /* hovers colors */
+  --main-hover-color: rgb(159, 159, 239);
+  --secondary-hover-color: #e757ec;
+  --block-hover-color: rgb(220, 220, 229);
 }
 
 * {

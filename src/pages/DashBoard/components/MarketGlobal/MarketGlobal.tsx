@@ -1,11 +1,13 @@
 import ChangeIndicator from "../../../../components/shared/ChangeIndicator/ChangeIndicator";
+import SolfLoader from "../../../../components/shared/SolfLoading/SolfLoading";
 import { useGetGlobal } from "../../../../hooks/CoinGecko";
 import { formatPrice } from "../../../../utils/formatPrice";
 import s from "./MarketGlobal.module.scss";
 
 const MarketGlobal = () => {
-  const { data } = useGetGlobal();
-  if (!data?.data) return <div>Данные не пришли</div>;
+  const { data, isLoading } = useGetGlobal();
+  if (!data?.data && !isLoading) return <div>Данные не пришли</div>;
+  if (!data?.data) return <SolfLoader text="Загрузка" weight={500} />;
   const globalInfo = data.data;
   const date = new Date(globalInfo.updated_at * 1000).toLocaleString([], {
     dateStyle: "medium",

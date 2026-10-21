@@ -1,15 +1,21 @@
 .coinsTable {
-  min-height: 200px;
   display: flex;
   flex-direction: column;
+  font-size: 14px;
+  min-height: 200px;
 }
 .table {
   flex: 1;
   overflow: auto;
+
   tr,
   td {
     padding: 6px 8px;
     text-align: left;
+  }
+  tbody {
+    height: 200px;
+    overflow: auto;
   }
   tbody tr {
     transition: 0.2s;
@@ -17,16 +23,35 @@
       background-color: rgb(212, 213, 228);
     }
   }
+  th {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px 8px;
+  }
   th:last-child {
     text-align: center;
   }
+  thead tr {
+    border-top: 1px solid rgb(219, 219, 219);
+    border-bottom: 1px solid rgb(219, 219, 219);
+    position: sticky;
+    top: 0;
+    background: var(--block-color); /* обязательно, иначе будет просвечивать */
+    z-index: 2;
+  }
+
   &_wrapper {
     width: 100%;
     border-collapse: collapse;
   }
 }
 .row {
+  // font-weight: 500;
   height: 30px;
+  &_index {
+    color: gray;
+    font-size: 13px;
+  }
   &_graphLink {
     display: inline-block;
     svg {
@@ -34,6 +59,8 @@
     }
   }
   &_coinsName {
+    font-weight: 500;
+    font-size: 16px;
     img {
       width: 30px;
     }
@@ -42,5 +69,15 @@
       display: flex;
       align-items: center;
     }
+  }
+}
+.sortColLabel {
+  display: flex;
+  gap: 4px;
+  &:hover &_arrow {
+    visibility: visible;
+  }
+  &_arrow {
+    visibility: hidden;
   }
 }

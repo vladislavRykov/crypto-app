@@ -1,5 +1,6 @@
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { client } from "../api";
+import type { MarketCoinOrder } from "@/CoinGeckoTypes";
 
 export const useCoinPrice = (params: {
   names: string;
@@ -28,7 +29,7 @@ export const useGetCoinChartById = (
 ) => {
   return useQuery({
     queryKey: ["coinChart", coinId, { ...params }],
-    queryFn: () => client.coins.MarketChartById.get(coinId, params),
+    queryFn: () => client.coins.market_chart.getById(coinId, params),
     staleTime: 30_000, // 30 секунд
   });
 };
@@ -46,6 +47,7 @@ export const useCoinsListMarket = (params: {
   });
 };
 export const useInfiniteCoinsListMarket = (params: {
+  order?: MarketCoinOrder;
   vs_currency: string;
   per_page: number;
   initialPage: number;
@@ -81,5 +83,16 @@ export const useGetCurrencies = () => {
     queryKey: ["currencies"],
     queryFn: () => client.simple.supported_vs_currencies.get(),
     staleTime: 1000 * 60 * 5,
+  });
+};
+
+export const useGetCoinById = (
+  params: { vs_currency: string },
+  coinId: string,
+) => {
+  return useQuery({
+    queryKey: ["coinData", coinId, { ...params }],
+    queryFn: () => client.coins.getById(coinId, params),
+    staleTime: 300_000, // 300 секунд
   });
 };

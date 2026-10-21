@@ -61,6 +61,97 @@ export type CoinWithMarketDataT = {
   price_change_percentage_200d_in_currency?: number;
   price_change_percentage_1y_in_currency?: number;
 };
+export interface MarketData {
+  current_price: Record<string, number>;
+
+  total_value_locked: unknown;
+  mcap_to_tvl_ratio: number | null;
+  fdv_to_tvl_ratio: number | null;
+  roi: unknown;
+
+  ath: Record<string, number>;
+  ath_change_percentage: Record<string, number>;
+  ath_date: Record<string, string>;
+
+  atl: Record<string, number>;
+  atl_change_percentage: Record<string, number>;
+  atl_date: Record<string, string>;
+
+  market_cap: Record<string, number>;
+  fully_diluted_valuation: Record<string, number>;
+
+  total_volume: Record<string, number>;
+
+  high_24h: Record<string, number>;
+  low_24h: Record<string, number>;
+
+  market_cap_fdv_ratio: number;
+
+  market_cap_rank?: number;
+  market_cap_rank_with_rehypothecated?: number;
+  price_change_percentage_200d_in_currency: Record<CurrencyT, number>;
+  price_change_percentage_24h_in_currency: Record<CurrencyT, number>;
+}
+export type CoinT = {
+  id: string;
+  symbol: string;
+  name: string;
+  web_slug: string;
+
+  asset_platform_id: string | null;
+
+  platforms: Record<string, string>;
+
+  detail_platforms: Record<
+    string,
+    {
+      decimal_place: number | null;
+      contract_address: string;
+    }
+  >;
+
+  block_time_in_minutes: number;
+  hashing_algorithm: string | null;
+
+  categories: string[];
+
+  preview_listing: boolean;
+  public_notice: string | null;
+  additional_notices: unknown[];
+
+  localization: { ru: string; en: string };
+  description: { en: string };
+
+  links: CryptoLinks;
+
+  image: CryptoImages;
+
+  country_origin: string;
+  genesis_date: string | null;
+
+  listing_price: number | null;
+  listing_currency: string;
+  listing_timestamp: number | null;
+  listing_source: string;
+  listing_source_url: string;
+
+  has_supply_breakdown: boolean;
+
+  sentiment_votes_up_percentage: number;
+  sentiment_votes_down_percentage: number;
+
+  watchlist_portfolio_users: number;
+
+  market_cap_rank: number;
+  market_cap_rank_with_rehypothecated: number;
+
+  market_data: MarketData;
+};
+export interface CryptoImages {
+  thumb: string;
+  small: string;
+  large: string;
+}
 export type GlobalDataT = {
   data: {
     active_cryptocurrencies: number;
@@ -215,5 +306,96 @@ export type GlobalDataT = {
     updated_at: number;
   };
 };
+export interface CryptoLinks {
+  homepage: string[];
+  whitepaper: string;
+  blockchain_site: string[];
+  official_forum_url: string[];
+  chat_url: string[];
+  announcement_url: string[];
+  snapshot_url: string | null;
 
-export type CurrenciesT = string[];
+  twitter_screen_name: string;
+  facebook_username: string;
+
+  telegram_channel_identifier: string;
+
+  subreddit_url: string;
+
+  repos_url: {
+    github: string[];
+    bitbucket: string[];
+  };
+}
+export type MarketCoinOrder =
+  | "market_cap_asc"
+  | "market_cap_desc"
+  | "volume_asc"
+  | "volume_desc"
+  | "id_asc"
+  | "id_desc";
+export type CurrencyT =
+  | "btc"
+  | "eth"
+  | "ltc"
+  | "bch"
+  | "bnb"
+  | "eos"
+  | "xrp"
+  | "xlm"
+  | "link"
+  | "dot"
+  | "yfi"
+  | "sol"
+  | "usd"
+  | "aed"
+  | "ars"
+  | "aud"
+  | "bdt"
+  | "bhd"
+  | "bmd"
+  | "brl"
+  | "cad"
+  | "chf"
+  | "clp"
+  | "cny"
+  | "czk"
+  | "dkk"
+  | "eur"
+  | "gbp"
+  | "gel"
+  | "hkd"
+  | "huf"
+  | "idr"
+  | "ils"
+  | "inr"
+  | "jpy"
+  | "krw"
+  | "kwd"
+  | "lkr"
+  | "mmk"
+  | "mxn"
+  | "myr"
+  | "ngn"
+  | "nok"
+  | "nzd"
+  | "php"
+  | "pkr"
+  | "pln"
+  | "rub"
+  | "sar"
+  | "sek"
+  | "sgd"
+  | "thb"
+  | "try"
+  | "twd"
+  | "uah"
+  | "vef"
+  | "vnd"
+  | "zar"
+  | "xdr"
+  | "xag"
+  | "xau"
+  | "bits"
+  | "sats";
+export type CurrenciesT = CurrencyT[];

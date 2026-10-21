@@ -1,9 +1,21 @@
-import type { CoinChartDataT, CoinWithMarketDataT } from "../../CoinGeckoTypes";
+import type {
+  CoinChartDataT,
+  CoinT,
+  CoinWithMarketDataT,
+  MarketCoinOrder,
+} from "../../CoinGeckoTypes";
 import { api } from "../coinGeckoApi";
 
 export const coins = {
+  getById: async (coinId: string, params: { vs_currency: string }) => {
+    const res = await api.get<CoinT>(`/coins/${coinId}`, {
+      params,
+    });
+    return res.data;
+  },
   markets: {
     get: async (params: {
+      order?: MarketCoinOrder;
       vs_currency: string;
       per_page: number;
       page: number;
@@ -16,8 +28,8 @@ export const coins = {
       return res.data;
     },
   },
-  MarketChartById: {
-    get: async (
+  market_chart: {
+    getById: async (
       coinId: string,
       params: { vs_currency: string; days: string; interval?: string },
     ) => {

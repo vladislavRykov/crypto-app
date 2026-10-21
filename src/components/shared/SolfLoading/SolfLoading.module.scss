@@ -1,0 +1,15 @@
+.softLoading {
+  text-align: center;
+  animation: blinking 1s infinite linear;
+}
+@keyframes blinking {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}

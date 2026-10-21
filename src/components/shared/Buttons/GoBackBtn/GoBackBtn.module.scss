@@ -1,0 +1,11 @@
+.btn {
+  padding: 6px 10px;
+  background-color: var(--main-color);
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.1s;
+  &:hover {
+    background-color: var(--main-hover-color);
+  }
+}
