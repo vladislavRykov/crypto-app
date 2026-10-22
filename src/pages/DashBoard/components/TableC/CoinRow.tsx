@@ -3,9 +3,9 @@ import ChangeIndicator from "../../../../components/shared/ChangeIndicator/Chang
 import { formatPrice } from "../../../../utils/formatPrice";
 import { Link } from "react-router-dom";
 import s from "./TableC.module.scss";
-import type { CoinWithMarketDataT } from "../../../../CoinGeckoTypes";
 import CoinSparkline from "./CoinSparkline";
 import imagePlaceholder from "@/assets/placeholders/imagePlaceholder.png";
+import type { CoinWithMarketDataT } from "@/api/types";
 
 type CoinRowT = {
   coin: CoinWithMarketDataT;

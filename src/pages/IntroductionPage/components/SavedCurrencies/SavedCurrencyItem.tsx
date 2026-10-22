@@ -1,9 +1,9 @@
 import React from "react";
 import s from "./SavedCurrencies.module.scss";
 import { Link } from "react-router-dom";
-import type { CoinFavT } from "@/utils/coin-favorite/favoriteCoins";
+import type { CoinFavT } from "@/features/coin/coin-favorite/favoriteCoins";
 import { formatPrice } from "@/utils/formatPrice";
-import { useCurrency } from "@/context/CurrencyContext";
+import { useCurrency } from "@/features/currency/context/CurrencyContext";
 import { formatPercent } from "@/utils/formatPercent";
 import ChangeIndicator from "@/components/shared/ChangeIndicator/ChangeIndicator";
 

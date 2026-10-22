@@ -5,7 +5,7 @@ import "./index.css";
 import App from "./App.tsx";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { BrowserRouter } from "react-router-dom";
-import { CurrencyProvider } from "./context/CurrencyContext.tsx";
+import { CurrencyProvider } from "./features/currency/context/CurrencyContext.tsx";
 
 const queryClient = new QueryClient();
 

@@ -1,11 +1,11 @@
 import s from "./Currency.module.scss";
-import { useGetCurrencies } from "../../../hooks/CoinGecko";
-import { useCurrency } from "../../../context/CurrencyContext";
+import { useCurrency } from "../../../features/currency/context/CurrencyContext";
 import { useSelect } from "../../../hooks/useSelect";
 import { useSearch } from "../../../hooks/useSearch";
-import { currencyNames } from "../../../constants/currencies";
-import type { CurrencyT } from "../../../CoinGeckoTypes";
+import { currencyNames } from "../../../features/currency/constants/currencies";
 import CurrencyPopup from "./CurrencyPopup";
+import type { CurrencyT } from "@/api/types";
+import { useGetCurrencies } from "@/features/currency/queries/currency";
 
 const Currency = () => {
   const { data, isLoading } = useGetCurrencies();

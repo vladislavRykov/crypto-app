@@ -3,7 +3,7 @@ import {
   getFavCoins,
   removeFavCoin,
   type CoinFavT,
-} from "@/utils/coin-favorite/favoriteCoins";
+} from "@/features/coin/coin-favorite/favoriteCoins";
 import { useState } from "react";
 
 export const useFavCoins = () => {

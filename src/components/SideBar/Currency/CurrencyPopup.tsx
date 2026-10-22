@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import s from "./Currency.module.scss";
-import type { CurrenciesT } from "../../../CoinGeckoTypes";
-import { currencyNames } from "../../../constants/currencies";
+import { currencyNames } from "../../../features/currency/constants/currencies";
+import type { CurrencyT } from "@/api/types";
 
 type CurrencyPopupT = {
-  currencies: CurrenciesT | undefined;
+  currencies: CurrencyT[] | undefined;
   value: string;
   onInputChange: React.ChangeEventHandler<HTMLInputElement, HTMLInputElement>;
   onOptionClick: (...args: any[]) => void;

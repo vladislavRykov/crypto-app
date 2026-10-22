@@ -1,5 +1,5 @@
-import type { GlobalDataT } from "../../CoinGeckoTypes";
 import { api } from "../coinGeckoApi";
+import type { GlobalDataT } from "../types";
 
 export const global = {
   get: async () => {

@@ -1,157 +1,3 @@
-export type searchResponseDataT = {
-  coins: {
-    id: string;
-    name: string;
-    api_symbol: string;
-    symbol: string;
-    market_cap_rank: number;
-    thumb: string;
-    large: string;
-  }[];
-  exchanges: {
-    id: string;
-    name: string;
-    market_type: string;
-    thumb: string;
-    large: string;
-  }[];
-
-  icos: [];
-  categories: {
-    id: string;
-    name: string;
-  }[];
-
-  nfts: {
-    id: string;
-    name: string;
-    symbol: string;
-    thumb: string;
-  }[];
-};
-
-export type CoinChartDataT = {
-  prices: [number, number][];
-  market_caps: [number, number][];
-  total_volumes: [number, number][];
-};
-export type CoinWithMarketDataT = {
-  id: string;
-  symbol: string;
-  name: string;
-  image?: string;
-  current_price: number;
-  market_cap: number;
-  market_cap_rank: number;
-  total_volume: number;
-  max_supply: number;
-  atl: number;
-  atl_change_percentage: number;
-  atl_date: string;
-  last_updated: string;
-  sparkline_in_7d?: {
-    price: number[];
-  };
-  price_change_percentage_24h?: number;
-  price_change_percentage_1h_in_currency?: number;
-  price_change_percentage_24h_in_currency?: number;
-  price_change_percentage_7d_in_currency?: number;
-  price_change_percentage_14d_in_currency?: number;
-  price_change_percentage_30d_in_currency?: number;
-  price_change_percentage_200d_in_currency?: number;
-  price_change_percentage_1y_in_currency?: number;
-};
-export interface MarketData {
-  current_price: Record<string, number>;
-
-  total_value_locked: unknown;
-  mcap_to_tvl_ratio: number | null;
-  fdv_to_tvl_ratio: number | null;
-  roi: unknown;
-
-  ath: Record<string, number>;
-  ath_change_percentage: Record<string, number>;
-  ath_date: Record<string, string>;
-
-  atl: Record<string, number>;
-  atl_change_percentage: Record<string, number>;
-  atl_date: Record<string, string>;
-
-  market_cap: Record<string, number>;
-  fully_diluted_valuation: Record<string, number>;
-
-  total_volume: Record<string, number>;
-
-  high_24h: Record<string, number>;
-  low_24h: Record<string, number>;
-
-  market_cap_fdv_ratio: number;
-
-  market_cap_rank?: number;
-  market_cap_rank_with_rehypothecated?: number;
-  price_change_percentage_200d_in_currency: Record<CurrencyT, number>;
-  price_change_percentage_24h_in_currency: Record<CurrencyT, number>;
-}
-export type CoinT = {
-  id: string;
-  symbol: string;
-  name: string;
-  web_slug: string;
-
-  asset_platform_id: string | null;
-
-  platforms: Record<string, string>;
-
-  detail_platforms: Record<
-    string,
-    {
-      decimal_place: number | null;
-      contract_address: string;
-    }
-  >;
-
-  block_time_in_minutes: number;
-  hashing_algorithm: string | null;
-
-  categories: string[];
-
-  preview_listing: boolean;
-  public_notice: string | null;
-  additional_notices: unknown[];
-
-  localization: { ru: string; en: string };
-  description: { en: string };
-
-  links: CryptoLinks;
-
-  image: CryptoImages;
-
-  country_origin: string;
-  genesis_date: string | null;
-
-  listing_price: number | null;
-  listing_currency: string;
-  listing_timestamp: number | null;
-  listing_source: string;
-  listing_source_url: string;
-
-  has_supply_breakdown: boolean;
-
-  sentiment_votes_up_percentage: number;
-  sentiment_votes_down_percentage: number;
-
-  watchlist_portfolio_users: number;
-
-  market_cap_rank: number;
-  market_cap_rank_with_rehypothecated: number;
-
-  market_data: MarketData;
-};
-export interface CryptoImages {
-  thumb: string;
-  small: string;
-  large: string;
-}
 export type GlobalDataT = {
   data: {
     active_cryptocurrencies: number;
@@ -306,6 +152,97 @@ export type GlobalDataT = {
     updated_at: number;
   };
 };
+export interface MarketData {
+  current_price: Record<string, number>;
+
+  total_value_locked: unknown;
+  mcap_to_tvl_ratio: number | null;
+  fdv_to_tvl_ratio: number | null;
+  roi: unknown;
+
+  ath: Record<string, number>;
+  ath_change_percentage: Record<string, number>;
+  ath_date: Record<string, string>;
+
+  atl: Record<string, number>;
+  atl_change_percentage: Record<string, number>;
+  atl_date: Record<string, string>;
+
+  market_cap: Record<string, number>;
+  fully_diluted_valuation: Record<string, number>;
+
+  total_volume: Record<string, number>;
+
+  high_24h: Record<string, number>;
+  low_24h: Record<string, number>;
+
+  market_cap_fdv_ratio: number;
+
+  market_cap_rank?: number;
+  market_cap_rank_with_rehypothecated?: number;
+  price_change_percentage_200d_in_currency: Record<CurrencyT, number>;
+  price_change_percentage_24h_in_currency: Record<CurrencyT, number>;
+}
+export type CoinT = {
+  id: string;
+  symbol: string;
+  name: string;
+  web_slug: string;
+
+  asset_platform_id: string | null;
+
+  platforms: Record<string, string>;
+
+  detail_platforms: Record<
+    string,
+    {
+      decimal_place: number | null;
+      contract_address: string;
+    }
+  >;
+
+  block_time_in_minutes: number;
+  hashing_algorithm: string | null;
+
+  categories: string[];
+
+  preview_listing: boolean;
+  public_notice: string | null;
+  additional_notices: unknown[];
+
+  localization: { ru: string; en: string };
+  description: { en: string };
+
+  links: CryptoLinks;
+
+  image: CryptoImages;
+
+  country_origin: string;
+  genesis_date: string | null;
+
+  listing_price: number | null;
+  listing_currency: string;
+  listing_timestamp: number | null;
+  listing_source: string;
+  listing_source_url: string;
+
+  has_supply_breakdown: boolean;
+
+  sentiment_votes_up_percentage: number;
+  sentiment_votes_down_percentage: number;
+
+  watchlist_portfolio_users: number;
+
+  market_cap_rank: number;
+  market_cap_rank_with_rehypothecated: number;
+
+  market_data: MarketData;
+};
+export interface CryptoImages {
+  thumb: string;
+  small: string;
+  large: string;
+}
 export interface CryptoLinks {
   homepage: string[];
   whitepaper: string;
@@ -327,13 +264,68 @@ export interface CryptoLinks {
     bitbucket: string[];
   };
 }
-export type MarketCoinOrder =
-  | "market_cap_asc"
-  | "market_cap_desc"
-  | "volume_asc"
-  | "volume_desc"
-  | "id_asc"
-  | "id_desc";
+export type CoinChartDataT = {
+  prices: [number, number][];
+  market_caps: [number, number][];
+  total_volumes: [number, number][];
+};
+export type CoinWithMarketDataT = {
+  id: string;
+  symbol: string;
+  name: string;
+  image?: string;
+  current_price: number;
+  market_cap: number;
+  market_cap_rank: number;
+  total_volume: number;
+  max_supply: number;
+  atl: number;
+  atl_change_percentage: number;
+  atl_date: string;
+  last_updated: string;
+  sparkline_in_7d?: {
+    price: number[];
+  };
+  price_change_percentage_24h?: number;
+  price_change_percentage_1h_in_currency?: number;
+  price_change_percentage_24h_in_currency?: number;
+  price_change_percentage_7d_in_currency?: number;
+  price_change_percentage_14d_in_currency?: number;
+  price_change_percentage_30d_in_currency?: number;
+  price_change_percentage_200d_in_currency?: number;
+  price_change_percentage_1y_in_currency?: number;
+};
+export type SearchResponseDataT = {
+  coins: {
+    id: string;
+    name: string;
+    api_symbol: string;
+    symbol: string;
+    market_cap_rank: number;
+    thumb: string;
+    large: string;
+  }[];
+  exchanges: {
+    id: string;
+    name: string;
+    market_type: string;
+    thumb: string;
+    large: string;
+  }[];
+
+  icos: [];
+  categories: {
+    id: string;
+    name: string;
+  }[];
+
+  nfts: {
+    id: string;
+    name: string;
+    symbol: string;
+    thumb: string;
+  }[];
+};
 export type CurrencyT =
   | "btc"
   | "eth"
@@ -398,4 +390,3 @@ export type CurrencyT =
   | "xau"
   | "bits"
   | "sats";
-export type CurrenciesT = CurrencyT[];

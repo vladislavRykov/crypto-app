@@ -1,10 +1,9 @@
 import { useParams } from "react-router-dom";
-import { useCurrency } from "@/context/CurrencyContext";
+import { useCurrency } from "@/features/currency/context/CurrencyContext";
 import CoinChart from "./components/CoinChart/CoinChart";
 import CoinInfo from "./components/CoinInfo/CoinInfo";
 import s from "./CoinPage.module.scss";
-import { useGetCoinById } from "@/hooks/CoinGecko";
-import GoBackBtn from "@/components/shared/Buttons/GoBackBtn/GoBackBtn";
+import { useGetCoinById } from "../../features/coin/queries/coins";
 
 const CoinPage = () => {
   const { id } = useParams();
@@ -13,6 +12,9 @@ const CoinPage = () => {
     { vs_currency: currency },
     id || "",
   );
+  if (!id) {
+    return <div>Нет id монеты в url</div>;
+  }
   if (isError || !coinData) {
     return <div>Не удалось загрузить данные о монете</div>;
   }

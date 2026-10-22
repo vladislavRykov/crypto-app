@@ -1,16 +1,14 @@
 import s from "./SearchBar.module.scss";
-import { useSearchForCoin } from "../../../hooks/CoinGecko";
-import { useDebouncedValue } from "../../../hooks/simpleHooks";
 import { Link } from "react-router-dom";
 import { useSelect } from "../../../hooks/useSelect";
 import { useSearchDebounced } from "../../../hooks/useSearch";
 import SolfLoader from "../../shared/SolfLoading/SolfLoading";
 import {
-  getHistory,
   updateHistory,
   type HistoryCoinSearchT,
-} from "@/utils/coin-search/searchCoinHistrory";
+} from "@/features/coin/coin-search/history/searchCoinHistrory";
 import SearchCoinHistory from "./SearchCoinHistory";
+import { useSearchForCoin } from "@/features/coin/coin-search/queries/search";
 
 const SearchBar = () => {
   const { value, debouncedValue, isUpdating, onInputChange, setValue } =

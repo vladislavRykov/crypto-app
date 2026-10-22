@@ -1,7 +1,7 @@
 import s from "./SearchBar.module.scss";
 import { Link } from "react-router-dom";
 import CrossBtn from "@/components/shared/Buttons/CrossBtn/CrossBtn";
-import { useCoinSearchHistory } from "@/hooks/useCoinSearchHistory";
+import { useCoinSearchHistory } from "@/features/coin/coin-search/history/useCoinSearchHistory";
 
 const SearchCoinHistory = ({
   onOptionClick,

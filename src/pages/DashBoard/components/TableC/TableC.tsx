@@ -1,13 +1,13 @@
 import { useRef } from "react";
 import s from "./TableC.module.scss";
-import { useInfiniteCoinsListMarket } from "../../../../hooks/CoinGecko";
-import { useCurrency } from "../../../../context/CurrencyContext";
+import { useCurrency } from "../../../../features/currency/context/CurrencyContext";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useScrollPagination } from "../../../../hooks/useScrollPagination";
 import CoinRow from "./CoinRow";
 import SolfLoader from "../../../../components/shared/SolfLoading/SolfLoading";
 import { useTableSort } from "@/hooks/useTableSort";
 import SortColLabel from "./SortColLabel";
+import { useInfiniteCoinsListMarket } from "../../../../features/dashboard/queries/market";
 
 const TableC = () => {
   const { currency } = useCurrency();
@@ -39,7 +39,6 @@ const TableC = () => {
   });
   if (!data && !isLoading) return <div>Данных нет</div>;
   if (!data && isLoading) return <SolfLoader text="Загрузка" weight={500} />;
-  console.log(sortedData);
   return (
     <div className={s.coinsTable}>
       <div ref={scrollEl} className={s.table}>

@@ -1,8 +1,8 @@
-import type { CryptoLinks } from "@/CoinGeckoTypes";
 import React from "react";
 import LinkItem from "./LinkItem";
 import { getUrlSiteName } from "@/utils/formatUrl";
 import s from "./CoinInfo.module.scss";
+import type { CryptoLinks } from "@/api/types";
 
 type CoinLinksT = {
   links: CryptoLinks;

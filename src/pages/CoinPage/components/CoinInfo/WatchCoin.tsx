@@ -1,5 +1,5 @@
-import { useFavCoins } from "@/hooks/useFavCoin";
-import type { CoinFavT } from "@/utils/coin-favorite/favoriteCoins";
+import { useFavCoins } from "@/features/coin/coin-favorite/useFavCoin";
+import type { CoinFavT } from "@/features/coin/coin-favorite/favoriteCoins";
 import s from "./CoinInfo.module.scss";
 
 type WatchCoinT = {

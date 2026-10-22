@@ -1,5 +1,5 @@
-import type { CurrenciesT } from "../../CoinGeckoTypes";
 import { api } from "../coinGeckoApi";
+import type { CurrencyT } from "../types";
 
 export const simple = {
   price: {
@@ -10,7 +10,7 @@ export const simple = {
   },
   supported_vs_currencies: {
     get: async () => {
-      const res = await api.get<CurrenciesT>("/simple/supported_vs_currencies");
+      const res = await api.get<CurrencyT[]>("/simple/supported_vs_currencies");
       return res.data;
     },
   },

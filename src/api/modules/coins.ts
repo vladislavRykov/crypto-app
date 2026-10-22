@@ -1,10 +1,13 @@
-import type {
-  CoinChartDataT,
-  CoinT,
-  CoinWithMarketDataT,
-  MarketCoinOrder,
-} from "../../CoinGeckoTypes";
 import { api } from "../coinGeckoApi";
+import type { CoinChartDataT, CoinT, CoinWithMarketDataT } from "../types";
+
+export type MarketCoinOrder =
+  | "market_cap_asc"
+  | "market_cap_desc"
+  | "volume_asc"
+  | "volume_desc"
+  | "id_asc"
+  | "id_desc";
 
 export const coins = {
   getById: async (coinId: string, params: { vs_currency: string }) => {

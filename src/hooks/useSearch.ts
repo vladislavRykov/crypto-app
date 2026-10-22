@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useDebouncedValue } from "./simpleHooks";
+import { useDebouncedValue } from "./useDebouncedValue";
 
 export const useSearch = () => {
   const [value, setValue] = useState("");
@@ -15,6 +15,6 @@ export const useSearch = () => {
 };
 export const useSearchDebounced = (delay: number = 800) => {
   const { value, setValue, onInputChange } = useSearch();
-  const { debouncedValue, isUpdating } = useDebouncedValue(value, 800);
+  const { debouncedValue, isUpdating } = useDebouncedValue(value, delay);
   return { value, debouncedValue, isUpdating, onInputChange, setValue };
 };

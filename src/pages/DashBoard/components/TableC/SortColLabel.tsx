@@ -1,7 +1,7 @@
-import type { CoinWithMarketDataT } from "@/CoinGeckoTypes";
 import { IoMdArrowDropdown } from "react-icons/io";
 import { IoMdArrowDropup } from "react-icons/io";
 import s from "./TableC.module.scss";
+import type { CoinWithMarketDataT } from "@/api/types";
 
 type SortColLabelT = {
   label: string;

@@ -1,7 +1,7 @@
 import ChangeIndicator from "../../../../components/shared/ChangeIndicator/ChangeIndicator";
 import SolfLoader from "../../../../components/shared/SolfLoading/SolfLoading";
-import { useGetGlobal } from "../../../../hooks/CoinGecko";
 import { formatPrice } from "../../../../utils/formatPrice";
+import { useGetGlobal } from "../../../../features/dashboard/queries/global";
 import s from "./MarketGlobal.module.scss";
 
 const MarketGlobal = () => {

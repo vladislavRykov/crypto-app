@@ -1,5 +1,5 @@
+import type { CurrencyT } from "@/api/types";
 import { createContext, useState, useContext, type ReactNode } from "react";
-import type { CurrencyT } from "../CoinGeckoTypes";
 
 type CurrencyContextType = {
   currency: CurrencyT;

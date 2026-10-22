@@ -1,5 +1,4 @@
-import type { CurrencyT } from "@/CoinGeckoTypes";
-import { useGetCoinChartById } from "@/hooks/CoinGecko";
+import type { CurrencyT } from "@/api/types";
 import { formatPrice } from "@/utils/formatPrice";
 import { getChartTime } from "@/utils/formatTime";
 import {
@@ -11,6 +10,7 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { useGetCoinChartById } from "../../../../features/coin/queries/coins";
 
 type CoinChartT = {
   vs_currency: CurrencyT;

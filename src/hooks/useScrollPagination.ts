@@ -12,16 +12,13 @@ export const useScrollPagination = ({
   ref,
 }: useScrollPaginationT) => {
   const [isNearBottom, setIsNearBottom] = useState<boolean>(false);
-  console.log(123);
   useEffect(() => {
     setIsNearBottom(false);
     const el = ref.current;
     if (!el) return;
-    console.log(122223);
     const handleScroll = () => {
       if (el.scrollTop + el.clientHeight >= el.scrollHeight - 100) {
         setIsNearBottom(true);
-        console.log("Низ блока");
         loadMore();
       }
     };

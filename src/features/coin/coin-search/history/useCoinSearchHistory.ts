@@ -3,7 +3,7 @@ import {
   getHistory,
   saveHistory,
   type HistoryCoinSearchT,
-} from "@/utils/coin-search/searchCoinHistrory";
+} from "@/features/coin/coin-search/history/searchCoinHistrory";
 import { useState } from "react";
 
 const MAX_LENGTH = 3;

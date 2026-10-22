@@ -1,4 +1,4 @@
-import type { CryptoImages } from "@/CoinGeckoTypes";
+import type { CryptoImages } from "@/api/types";
 import { getlocalStorageData } from "@/services/storageService";
 
 const KEY = "fav-coins";
