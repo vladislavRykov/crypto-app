@@ -13,7 +13,6 @@ type SortColLabelT = {
 const SortColLabel = ({
   label,
   selectedSortDirection,
-  selectedSortKey,
   onClick,
 }: SortColLabelT) => {
   return (

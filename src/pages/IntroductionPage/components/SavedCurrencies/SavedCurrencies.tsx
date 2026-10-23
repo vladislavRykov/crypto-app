@@ -1,8 +1,7 @@
-import React from "react";
 import s from "./SavedCurrencies.module.scss";
 import { useFavCoins } from "@/features/coin/coin-favorite/useFavCoin";
-import { Link } from "react-router-dom";
 import SavedCurrencyItem from "./SavedCurrencyItem";
+
 const SavedCurrencies = () => {
   const { favCoins, deleteFavCoinF } = useFavCoins();
   return (

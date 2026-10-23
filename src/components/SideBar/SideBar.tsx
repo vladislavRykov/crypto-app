@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./SideBar.module.scss";
 import SideBarItem from "./SideBarItem";
 import { sideBarPageLinks } from "./sideBarOptions";

@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./HomePage.module.scss";
 import SavedCurrencies from "./components/SavedCurrencies/SavedCurrencies";
 

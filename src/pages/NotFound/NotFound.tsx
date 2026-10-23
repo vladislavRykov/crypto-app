@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./NotFound.module.scss";
 import GoBackBtn from "@/components/shared/Buttons/GoBackBtn/GoBackBtn";
 

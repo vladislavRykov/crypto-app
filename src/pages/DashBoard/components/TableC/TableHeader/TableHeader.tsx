@@ -1,4 +1,3 @@
-import React from "react";
 import s from "./TableHeader.module.scss";
 import SortColLabel from "./SortColLabel";
 import type { CoinWithMarketDataT } from "@/api/types";

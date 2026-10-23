@@ -8,7 +8,6 @@ import SolfLoader from "../../../../components/shared/SolfLoading/SolfLoading";
 import { useTableSort } from "@/hooks/useTableSort";
 import { useInfiniteCoinsListMarket } from "../../../../features/dashboard/queries/market";
 import TableHeader from "./TableHeader/TableHeader";
-import type { CoinWithMarketDataT } from "@/api/types";
 
 const TableC = () => {
   const { currency } = useCurrency();

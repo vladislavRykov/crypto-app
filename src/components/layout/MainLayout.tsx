@@ -1,4 +1,3 @@
-import { type ReactNode } from "react";
 import s from "./MainLayout.module.scss";
 import { Outlet } from "react-router-dom";
 import SideBar from "../SideBar/SideBar";

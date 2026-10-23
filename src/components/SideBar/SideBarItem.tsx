@@ -1,6 +1,5 @@
-import React from "react";
 import type { IconType } from "react-icons";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import s from "./SideBar.module.scss";
 import cn from "classnames";
 

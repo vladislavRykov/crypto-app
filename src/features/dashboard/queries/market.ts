@@ -21,7 +21,7 @@ export const useInfiniteCoinsListMarket = (params: {
         ? allPages.length + 1
         : undefined;
     },
-    getPreviousPageParam: (firstPage, allPages) => {
+    getPreviousPageParam: (_, allPages) => {
       const currentPageId = allPages.length;
       return currentPageId > 1 ? currentPageId - 1 : undefined;
     },

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import ChangeIndicator from "../../../../../components/shared/ChangeIndicator/ChangeIndicator";
 import { formatPrice } from "../../../../../utils/formatPrice";
 import { Link } from "react-router-dom";
