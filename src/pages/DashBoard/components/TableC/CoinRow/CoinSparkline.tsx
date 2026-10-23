@@ -1,4 +1,4 @@
-import { SparklineChart } from "../../../../components/shared/SparkLineChart/SparklineChart";
+import { SparklineChart } from "../../../../../components/shared/SparkLineChart/SparklineChart";
 
 type CoinSparklineT = {
   price_change_percentage_24h: number | undefined;

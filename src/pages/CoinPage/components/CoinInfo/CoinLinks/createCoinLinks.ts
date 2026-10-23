@@ -1,26 +1,20 @@
-import React from "react";
-import LinkItem from "./LinkItem";
-import { getUrlSiteName } from "@/utils/formatUrl";
-import s from "./CoinInfo.module.scss";
 import type { CryptoLinks } from "@/api/types";
+import { getUrlSiteName } from "@/utils/formatUrl";
+import { FaReddit } from "react-icons/fa";
+import { FaTwitter } from "react-icons/fa";
+import { FaFacebook } from "react-icons/fa";
+import { FaTelegram } from "react-icons/fa";
 
-type CoinLinksT = {
-  links: CryptoLinks;
-};
-
-const CoinLinks = ({ links }: CoinLinksT) => {
-  const {
-    homepage,
-    whitepaper,
-    official_forum_url,
-    subreddit_url,
-    repos_url,
-    twitter_screen_name,
-    facebook_username,
-    telegram_channel_identifier,
-  } = links;
-
-  const displayData = [
+export function createCoinLinks({
+  whitepaper,
+  homepage,
+  subreddit_url,
+  telegram_channel_identifier,
+  twitter_screen_name,
+  official_forum_url,
+  facebook_username,
+}: CryptoLinks) {
+  return [
     {
       title: "Официальный сайты",
       links: [
@@ -38,22 +32,26 @@ const CoinLinks = ({ links }: CoinLinksT) => {
         {
           name: getUrlSiteName(subreddit_url),
           url: subreddit_url,
+          Icon: FaReddit,
           existing: !!subreddit_url,
         },
         {
           name: "Facebook",
           url: `https://www.facebook.com/${facebook_username}`,
           existing: !!facebook_username,
+          Icon: FaFacebook,
         },
         {
           name: "Telegram",
           url: `https://t.me/${telegram_channel_identifier}`,
           existing: !!telegram_channel_identifier,
+          Icon: FaTelegram,
         },
         {
           name: "Twitter",
           url: `https://twitter.com/${twitter_screen_name}`,
           existing: !!twitter_screen_name,
+          Icon: FaTwitter,
         },
         {
           name: getUrlSiteName(official_forum_url[0]),
@@ -63,22 +61,4 @@ const CoinLinks = ({ links }: CoinLinksT) => {
       ],
     },
   ];
-  return (
-    <div className={s.coinLinks}>
-      {displayData.map((data) => (
-        <div className={s.coinLinks_item}>
-          <h2 className={s.coinLinks_title}>{data.title}</h2>
-          <div className={s.coinLinks_links}>
-            {data.links.map((link) => {
-              if (link.existing) {
-                return <LinkItem url={link.url} text={link.name} />;
-              }
-            })}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-};
-
-export default CoinLinks;
+}

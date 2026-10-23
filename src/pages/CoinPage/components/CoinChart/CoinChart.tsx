@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { useGetCoinChartById } from "../../../../features/coin/queries/coins";
+import SolfLoader from "@/components/shared/SolfLoading/SolfLoading";
 
 type CoinChartT = {
   vs_currency: CurrencyT;
@@ -18,7 +19,7 @@ type CoinChartT = {
 };
 
 const CoinChart = ({ vs_currency, id }: CoinChartT) => {
-  const { data, isLoading, error } = useGetCoinChartById(
+  const { data, isLoading, isError } = useGetCoinChartById(
     {
       days: "200",
       vs_currency,
@@ -29,6 +30,13 @@ const CoinChart = ({ vs_currency, id }: CoinChartT) => {
     timestamp,
     price,
   }));
+  if (isLoading)
+    return (
+      <div style={{ width: "100%" }}>
+        <SolfLoader text="Загрузка..." weight={500} />
+      </div>
+    );
+  if (isError || !data) return <div>Данных нет</div>;
   return (
     <ResponsiveContainer width="100%" height={300}>
       <LineChart width={600} height={300} data={chartData}>

@@ -2,7 +2,7 @@ import s from "./CoinInfo.module.scss";
 import { formatPrice } from "@/utils/formatPrice";
 import ChangeIndicator from "@/components/shared/ChangeIndicator/ChangeIndicator";
 import GoBackBtn from "@/components/shared/Buttons/GoBackBtn/GoBackBtn";
-import CoinLinks from "./CoinLinks";
+import CoinLinks from "./CoinLinks/CoinLinks";
 import WatchCoin from "./WatchCoin";
 import type { CoinT, CurrencyT } from "@/api/types";
 

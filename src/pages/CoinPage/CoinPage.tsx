@@ -4,20 +4,22 @@ import CoinChart from "./components/CoinChart/CoinChart";
 import CoinInfo from "./components/CoinInfo/CoinInfo";
 import s from "./CoinPage.module.scss";
 import { useGetCoinById } from "../../features/coin/queries/coins";
+import SolfLoader from "@/components/shared/SolfLoading/SolfLoading";
 
 const CoinPage = () => {
   const { id } = useParams();
   const { currency } = useCurrency();
-  const { data: coinData, isError } = useGetCoinById(
-    { vs_currency: currency },
-    id || "",
-  );
+  const {
+    data: coinData,
+    isError,
+    isLoading,
+  } = useGetCoinById({ vs_currency: currency }, id || "");
   if (!id) {
     return <div>Нет id монеты в url</div>;
   }
-  if (isError || !coinData) {
-    return <div>Не удалось загрузить данные о монете</div>;
-  }
+  if (isLoading) return <SolfLoader text="Загрузка..." weight={500} />;
+  if (isError || !coinData) return <div>Ошибка</div>;
+
   return (
     <div className={s.coinPage}>
       <div className={s.coinPage_wrapper}>

@@ -1,0 +1,28 @@
+.thead {
+  th {
+    font-weight: 400;
+    font-size: 14px;
+    padding: 6px 8px;
+  }
+  th:last-child {
+    text-align: center;
+  }
+  thead tr {
+    border-top: 1px solid rgb(219, 219, 219);
+    border-bottom: 1px solid rgb(219, 219, 219);
+    position: sticky;
+    top: 0;
+    background: var(--block-color); /* обязательно, иначе будет просвечивать */
+    z-index: 2;
+  }
+}
+.sortColLabel {
+  display: flex;
+  gap: 4px;
+  &:hover &_arrow {
+    visibility: visible;
+  }
+  &_arrow {
+    visibility: hidden;
+  }
+}

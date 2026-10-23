@@ -1,27 +1,33 @@
 import { useRef } from "react";
 import s from "./TableC.module.scss";
 import { useCurrency } from "../../../../features/currency/context/CurrencyContext";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { useScrollPagination } from "../../../../hooks/useScrollPagination";
-import CoinRow from "./CoinRow";
+import CoinRow from "./CoinRow/CoinRow";
 import SolfLoader from "../../../../components/shared/SolfLoading/SolfLoading";
 import { useTableSort } from "@/hooks/useTableSort";
-import SortColLabel from "./SortColLabel";
 import { useInfiniteCoinsListMarket } from "../../../../features/dashboard/queries/market";
+import TableHeader from "./TableHeader/TableHeader";
+import type { CoinWithMarketDataT } from "@/api/types";
 
 const TableC = () => {
   const { currency } = useCurrency();
-  const [searchParams, _] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const page = searchParams.get("page");
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteCoinsListMarket({
-      vs_currency: currency,
-      per_page: 50,
-      // initialPage: 3,
-      initialPage: Number(page) || 1,
-      locale: "ru",
-      sparkline: true,
-    });
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isError,
+  } = useInfiniteCoinsListMarket({
+    vs_currency: currency,
+    per_page: 50,
+    initialPage: Number(page) || 1,
+    locale: "ru",
+    sparkline: true,
+  });
   const scrollEl = useRef<HTMLDivElement>(null);
   useScrollPagination({
     loadMore: () => {
@@ -37,54 +43,20 @@ const TableC = () => {
     initialSortKey: "market_cap",
     initialDirection: "desc",
   });
-  if (!data && !isLoading) return <div>Данных нет</div>;
-  if (!data && isLoading) return <SolfLoader text="Загрузка" weight={500} />;
+  if (isLoading) return <SolfLoader text="Загрузка..." weight={500} />;
+  if (isError || !data) return <div>Данных нет</div>;
   return (
     <div className={s.coinsTable}>
       <div ref={scrollEl} className={s.table}>
         <table className={s.table_wrapper}>
-          <thead className={s.table_head}>
-            <tr>
-              <th>№</th>
-              <th>
-                <SortColLabel
-                  selectedSortKey={sortKey}
-                  selectedSortDirection={sortDirection}
-                  onClick={() => handleSort("name")}
-                  label="Валюта"
-                />
-              </th>
-              <th>
-                <SortColLabel
-                  selectedSortKey={sortKey}
-                  selectedSortDirection={sortDirection}
-                  onClick={() => handleSort("current_price")}
-                  label="Цена"
-                />
-              </th>
-              <th>
-                <SortColLabel
-                  selectedSortKey={sortKey}
-                  selectedSortDirection={sortDirection}
-                  onClick={() => handleSort("price_change_percentage_24h")}
-                  label="24 часа"
-                />
-              </th>
-              <th>
-                <SortColLabel
-                  selectedSortKey={sortKey}
-                  selectedSortDirection={sortDirection}
-                  onClick={() => handleSort("market_cap")}
-                  label="Market Cap"
-                />
-              </th>
-              <th>Последние 7 дней</th>
-            </tr>
-          </thead>
+          <TableHeader
+            handleSort={handleSort}
+            selectedSortDirection={sortDirection}
+            selectedSortKey={sortKey}
+          />
           <tbody className={s.table_body}>
-            {/* {data?.pages.flat().map((coin, idx) => ( */}
-            {sortedData.map((coin, idx) => (
-              <CoinRow coin={coin} idx={idx} currency={currency} />
+            {sortedData.map((coin) => (
+              <CoinRow key={coin.id} coin={coin} currency={currency} />
             ))}
           </tbody>
         </table>

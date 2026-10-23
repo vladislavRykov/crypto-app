@@ -3,6 +3,7 @@ import MainLayout from "./components/layout/MainLayout";
 import DashBoard from "./pages/DashBoard/DashBoard";
 import CoinPage from "./pages/CoinPage/CoinPage";
 import HomePage from "./pages/IntroductionPage/HomePage";
+import NotFound from "./pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Route path="dashboard" element={<DashBoard />} />
         <Route path="coin/:id" element={<CoinPage />} />
       </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

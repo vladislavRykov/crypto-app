@@ -12,7 +12,7 @@ const SideBar = () => {
       <SearchBar />
       <div className={s.aside_links}>
         {sideBarPageLinks.map((option) => (
-          <SideBarItem option={option} />
+          <SideBarItem key={option.path} option={option} />
         ))}
       </div>
     </aside>

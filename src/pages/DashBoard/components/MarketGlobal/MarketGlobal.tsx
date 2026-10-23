@@ -5,14 +5,17 @@ import { useGetGlobal } from "../../../../features/dashboard/queries/global";
 import s from "./MarketGlobal.module.scss";
 
 const MarketGlobal = () => {
-  const { data, isLoading } = useGetGlobal();
-  if (!data?.data && !isLoading) return <div>Данные не пришли</div>;
-  if (!data?.data) return <SolfLoader text="Загрузка" weight={500} />;
-  const globalInfo = data.data;
-  const date = new Date(globalInfo.updated_at * 1000).toLocaleString([], {
-    dateStyle: "medium",
-    timeStyle: "short",
-  });
+  const { data, isLoading, isError } = useGetGlobal();
+  const globalInfo = data?.data;
+  const date =
+    globalInfo &&
+    new Date(globalInfo.updated_at * 1000).toLocaleString([], {
+      dateStyle: "medium",
+      timeStyle: "short",
+    });
+
+  if (isLoading) return <SolfLoader text="Загрузка" weight={500} />;
+  if (isError || !globalInfo) return <div>Ошибка</div>;
 
   const change24HoursUsd = globalInfo.market_cap_change_percentage_24h_usd;
   return (
@@ -23,8 +26,8 @@ const MarketGlobal = () => {
           Цены на криптовалюты по рыночной капитализации
         </span>
         <br />
-        {`Размер рынка криптовалют на текущий момент ${formatPrice(globalInfo.total_market_cap.usd)}`}
-        , изменение на <ChangeIndicator percent={change24HoursUsd} /> за
+        {`Размер рынка криптовалют на текущий момент ${formatPrice(globalInfo.total_market_cap.usd || 1)}`}
+        , изменение на <ChangeIndicator percent={change24HoursUsd || 1} /> за
         последние 24 часа
       </div>
     </section>

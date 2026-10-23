@@ -1,6 +1,6 @@
 import React from "react";
 import type { IconType } from "react-icons";
-import s from "./CoinInfo.module.scss";
+import s from "./CoinLinks.module.scss";
 
 type LinkItemT = {
   url: string;
@@ -11,6 +11,7 @@ type LinkItemT = {
 const LinkItem = ({ url, text, Icon }: LinkItemT) => {
   return (
     <a className={s.linkItem} href={url} target="_blank">
+      {Icon && <Icon />}
       {text}
     </a>
   );

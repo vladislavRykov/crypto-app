@@ -1,0 +1,26 @@
+.row {
+  // font-weight: 500;
+  height: 30px;
+  &_index {
+    color: gray;
+    font-size: 13px;
+  }
+  &_graphLink {
+    display: inline-block;
+    svg {
+      cursor: pointer;
+    }
+  }
+  &_coinsName {
+    font-weight: 500;
+    font-size: 16px;
+    img {
+      width: 30px;
+    }
+    a {
+      gap: 10px;
+      display: flex;
+      align-items: center;
+    }
+  }
+}

@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import ChangeIndicator from "../../../../components/shared/ChangeIndicator/ChangeIndicator";
-import { formatPrice } from "../../../../utils/formatPrice";
+import ChangeIndicator from "../../../../../components/shared/ChangeIndicator/ChangeIndicator";
+import { formatPrice } from "../../../../../utils/formatPrice";
 import { Link } from "react-router-dom";
-import s from "./TableC.module.scss";
+import s from "./CoinRow.module.scss";
 import CoinSparkline from "./CoinSparkline";
 import imagePlaceholder from "@/assets/placeholders/imagePlaceholder.png";
 import type { CoinWithMarketDataT } from "@/api/types";
 
 type CoinRowT = {
   coin: CoinWithMarketDataT;
-  idx: number;
   currency: string;
 };
 
